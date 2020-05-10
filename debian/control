@@ -1,7 +1,7 @@
 Source: tnftp
 Section: net
 Priority: optional
-Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
+Maintainer: xiao sheng wen <atzlinux@sina.com>
 Build-Depends: debhelper-compat (= 13), 
  libncurses5-dev, 
  libssl-dev, 
