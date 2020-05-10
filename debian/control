@@ -2,9 +2,9 @@ Source: tnftp
 Section: net
 Priority: optional
 Maintainer: xiao sheng wen <atzlinux@sina.com>
-Build-Depends: debhelper-compat (= 13), 
- libncurses5-dev, 
- libssl-dev, 
+Build-Depends: debhelper-compat (= 13),
+ libncurses5-dev,
+ libssl-dev,
 Standards-Version: 4.5.0
 Homepage: http://en.wikipedia.org/wiki/Tnftp
 
