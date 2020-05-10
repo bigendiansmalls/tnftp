@@ -2,7 +2,9 @@ Source: tnftp
 Section: net
 Priority: optional
 Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
-Build-Depends: debhelper (>= 7), libncurses5-dev, libssl-dev, autotools-dev
+Build-Depends: debhelper-compat (= 13), 
+ libncurses5-dev, 
+ libssl-dev, 
 Standards-Version: 4.5.0
 Homepage: http://en.wikipedia.org/wiki/Tnftp
 
