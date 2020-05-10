@@ -1,5 +1,5 @@
 # See uscan(1) for format
 # Compulsory line, this is a version 3 file
 version=3
-#http://ftp.netbsd.org/pub/NetBSD/misc/lukemftp/tnftp-(.*)\.tar\.gz
 ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/tnftp-(.*)\.tar\.gz
+opts=pgpmode=auto
