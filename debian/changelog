@@ -4,7 +4,9 @@ tnftp (20151004-1) unstable; urgency=medium
   * Initial upstream branch.
   * add gbp.conf
   * New upstream version 20151004
-  * debian/watch: add opts=pgpmode=auto
+  * debian/watch:
+     - add opts=pgpsigurlmangle=s/$/.asc/
+     - update to version=4
   * delete the CVE-2014-8517.patch, the new upstream had already applied
   * add debian/upstream/signing-key.asc
 
