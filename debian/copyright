@@ -1,22 +1,26 @@
-This package was debianized by Takuo KITAME <kitame@northeye.org> on
-Sun,  7 Nov 1999 22:45:54 +0900.
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: tnftp
+Upstream-Contact: Luke Mewburn <lukem@netbsd.org>
+Source: ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
 
-It was downloaded from:
-   ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
-
-Upstream Author:
-
-    Luke Mewburn <lukem@netbsd.org>
-
+Files: *
 Copyright:
+    1985,1989,1993,1994 The Regents of the University of California.
+    1997-2007 The NetBSD Foundation, Inc.
+    1997,1998 WIDE Project.
+    1999-2007 Luke Mewburn.
+License: Unlicense
 
-    Copyright 1985,1989,1993,1994 The Regents of the University of California.
-    Copyright 1997-2007 The NetBSD Foundation, Inc.
-    Copyright 1997,1998 WIDE Project.
-    Copyright 1999-2007 Luke Mewburn.
+Files: debian/*
+Copyright:
+    1999-2002,2004 Takuo KITAME <kitame@debian.org>
+    2006 Luk Claes <luk@debian.org>
+    2007 Bastian Venthur <venthur@debian.org>
+    2008 Tobias Toedter <toddy@debian.org>
+    2020 xiao sheng wen <atzlinux@sina.com>
+License: GPL-2+
 
-License:
-
+License: Unlicense
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions
     are met:
@@ -32,7 +36,7 @@ License:
     4. Neither the name of The NetBSD Foundation nor the names of its
        contributors may be used to endorse or promote products derived
        from this software without specific prior written permission.
-    
+ .
     THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
     ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
     TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
@@ -44,40 +48,31 @@ License:
     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
     ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
     POSSIBILITY OF SUCH DAMAGE.
+ .
+ This product includes software developed by the NetBSD Foundation, Inc.
+ and its contributors. For a complete list of contributors see
+ /usr/share/doc/tnftp/THANKS.
+ .
+ This product includes software developed by the University of California,
+ Berkeley and its contributors. Those contributors include:
+ - Christos Zoulas of Cornell University.
+ - Guido van Rossum.
+ .
+ This product includes software developed by Christos Zoulas.
 
-This product includes software developed by the NetBSD Foundation, Inc.
-and its contributors. For a complete list of contributors see
-/usr/share/doc/tnftp/THANKS.
-
-This product includes software developed by the University of California,
-Berkeley and its contributors. Those contributors include:
-	- Christos Zoulas of Cornell University.
-	- Guido van Rossum.
-
-This product includes software developed by Christos Zoulas.
-
-Copyright for Debian packaging work:
-
-    Copyright 1999-2002,2004 Takuo KITAME <kitame@debian.org>
-    Copyright 2006 Luk Claes <luk@debian.org>
-    Copyright 2007 Bastian Venthur <venthur@debian.org>
-    Copyright 2008 Tobias Toedter <toddy@debian.org>
-
-License for Debian packaging work:
-
-    This package is free software; you can redistribute it and/or
-    modify it under the terms of the GNU General Public License
-    as published by the Free Software Foundation; either version 2
-    of the License, or (at your option) any later version.
-
-    This package is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this package; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
-On Debian systems, the complete text of the GNU General
-Public License can be found in `/usr/share/common-licenses/GPL-2'.
+License: GPL-2+
+ .
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful
+ but WITHOUT ANY WARRANTY; without even the implied warranty o
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License with
+ the Debian GNU/Linux distribution in file /usr/share/common-licenses/GPL-2;
+ if not, write to the Free Software Foundation, Inc., 51 Franklin St,
+ Fifth Floor, Boston, MA 02110-1301, USA.
