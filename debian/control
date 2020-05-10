@@ -6,6 +6,7 @@ Build-Depends: debhelper-compat (= 13),
  libncurses5-dev,
  libssl-dev,
 Standards-Version: 4.5.0
+Rules-Requires-Root: no
 Homepage: http://en.wikipedia.org/wiki/Tnftp
 
 Package: tnftp
