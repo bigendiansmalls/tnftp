@@ -1,3 +1,19 @@
+tnftp (20130505-4) unstable; urgency=medium
+
+  [ Christos Zoulas ]
+  * CVS commit: src/usr.bin/ftp
+
+  [ 肖盛文 ]
+  * Bumped Standards-Version: 4.5.0
+  * Bumped debhelper-compat (= 13)
+  * add DPKG_EXPORT_BUILDFLAGS = 1
+  * delete trailing-whitespace
+  * add Rules-Requires-Root: no
+  * Bumped dep5-copyright
+  * New maintainer (Closes: #925058)
+
+ -- xiao sheng wen <atzlinux@sina.com>  Sun, 10 May 2020 18:51:14 +0800
+
 tnftp (20130505-3) unstable; urgency=medium
 
   * Revert DH compatibility level to 7.
@@ -47,7 +63,7 @@ tnftp (20100108-2) unstable; urgency=low
 
   * Source format is 3.0 (quilt)
   * Update homepage control line
-  * Update debian/copyright and debian/watch 
+  * Update debian/copyright and debian/watch
   * Fix out-of-date-standards-version
   * Fix description-synopsis-starts-with-article
   * Fix debian-rules-missing-recommended-target
@@ -56,7 +72,7 @@ tnftp (20100108-2) unstable; urgency=low
 
 tnftp (20100108-1) unstable; urgency=low
 
-  * New upstream version 
+  * New upstream version
 
  -- Anibal Monsalve Salazar <anibal@debian.org>  Wed, 27 Jan 2010 15:48:54 +1100
 
@@ -81,13 +97,13 @@ tnftp (20090606-2) unstable; urgency=low
 
 tnftp (20090606-1) unstable; urgency=low
 
-  * New upstream version 
+  * New upstream version
 
  -- Anibal Monsalve Salazar <anibal@debian.org>  Tue, 09 Jun 2009 08:49:51 +1000
 
 tnftp (20090520-1) unstable; urgency=low
 
-  * New upstream version 
+  * New upstream version
   * Build depend on quilt
 
  -- Anibal Monsalve Salazar <anibal@debian.org>  Wed, 27 May 2009 16:13:26 +1000
@@ -165,7 +181,7 @@ lukemftp (1.5-7) unstable; urgency=low
   * fix for buffer overflow on PASV from malicious server. (closes: #146148)
     backported from
      http://www.freebsd.org/cgi/cvsweb.cgi/src/contrib/lukemftp/src/ftp.c
- 
+
  -- Takuo KITAME <kitame@northeye.org>  Wed,  8 May 2002 10:37:45 +0900
 
 lukemftp (1.5-6) unstable; urgency=low
@@ -218,5 +234,3 @@ lukemftp (1.0-1) unstable; urgency=low
   * Initial Release.
 
  -- Takuo KITAME <kitame@northeye.org>  Sun,  7 Nov 1999 22:45:54 +0900
-
-
