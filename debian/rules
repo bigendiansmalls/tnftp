@@ -5,16 +5,19 @@
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
 
-export CFLAGS+="-g -O2 -fstack-protector-strong -Wformat -Werror=format-security"
-export LDFLAGS+="-Wl,-z,relro"
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+%:
+	dh  $@
 
 build-arch: build
 build-indep: build
 build: build-stamp
 build-stamp:
 	dh_testdir
-	dh_autotools-dev_updateconfig
-	./configure --prefix=/usr --mandir=\$${prefix}/share/man CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS)
+	./configure --prefix=/usr --mandir=\$${prefix}/share/man
 	$(MAKE)
 	touch build-stamp
 
@@ -23,7 +26,6 @@ clean:
 	dh_testroot
 	rm -f build-stamp
 	[ ! -f Makefile ] || $(MAKE) distclean
-	dh_autotools-dev_restoreconfig
 	dh_clean
 
 install: build
