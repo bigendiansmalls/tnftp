@@ -17,6 +17,7 @@ build-indep: build
 build: build-stamp
 build-stamp:
 	dh_testdir
+	dh_update_autotools_config
 	./configure --prefix=/usr --mandir=\$${prefix}/share/man
 	$(MAKE)
 	touch build-stamp
