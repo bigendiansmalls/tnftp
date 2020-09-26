@@ -1,4 +1,4 @@
-## $NetBSD: Makefile.am,v 1.4 2013/05/05 13:29:19 lukem Exp $
+## $NetBSD: Makefile.am,v 1.5 2020/07/05 09:37:53 lukem Exp $
 
 bin_PROGRAMS = tnftp
 
@@ -26,13 +26,17 @@ tnftp_LDADD = \
 	../libnetbsd/libnetbsd.la 
 
 
-if USE_LIBEDIT
+if OPT_EDITCOMPLETE
+if WITH_LOCAL_LIBEDIT
 tnftp_CPPFLAGS += \
 	-I$(top_srcdir)/libedit
 
 tnftp_LDADD += \
 	../libedit/libedit.la
-endif
+else	# !WITH_LOCAL_LIBEDIT
+tnftp_LDADD += -ledit
+endif	# !WITH_LOCAL_LIBEDIT
+endif	# !OPT_EDITCOMPLETE
 
 
 if WITH_SSL
