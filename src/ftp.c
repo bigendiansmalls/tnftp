@@ -1,8 +1,8 @@
-/*	$NetBSD: ftp.c,v 1.19 2013/05/05 11:17:31 lukem Exp $	*/
-/*	from	NetBSD: ftp.c,v 1.164 2012/07/04 06:09:37 is Exp	*/
+/*	$NetBSD: ftp.c,v 1.22 2020/07/04 09:59:07 lukem Exp $	*/
+/*	from	NetBSD: ftp.c,v 1.169 2020/06/08 01:33:27 lukem Exp	*/
 
 /*-
- * Copyright (c) 1996-2009 The NetBSD Foundation, Inc.
+ * Copyright (c) 1996-2020 The NetBSD Foundation, Inc.
  * All rights reserved.
  *
  * This code is derived from software contributed to The NetBSD Foundation
@@ -98,7 +98,7 @@
 #if 0
 static char sccsid[] = "@(#)ftp.c	8.6 (Berkeley) 10/27/94";
 #else
-__RCSID(" NetBSD: ftp.c,v 1.164 2012/07/04 06:09:37 is Exp  ");
+__RCSID(" NetBSD: ftp.c,v 1.169 2020/06/08 01:33:27 lukem Exp  ");
 #endif
 #endif /* not lint */
 
@@ -208,7 +208,17 @@ hookup(const char *host, const char *port)
 		}
 		if (verbose && res0->ai_next) {
 				/* if we have multiple possibilities */
-			fprintf(ttyout, "Trying %s:%s ...\n", hname, sname);
+#ifdef INET6
+			if(res->ai_family == AF_INET6) {
+				fprintf(ttyout, "Trying [%s]:%s ...\n", hname,
+				    sname);
+			} else {
+#endif
+				fprintf(ttyout, "Trying %s:%s ...\n", hname,
+				    sname);
+#ifdef INET6
+			}
+#endif
 		}
 		s = socket(res->ai_family, SOCK_STREAM, res->ai_protocol);
 		if (s < 0) {
@@ -1551,8 +1561,8 @@ initconn(void)
 				result = COMPLETE + 1;
 				break;
 			}
-			/* FALLTHROUGH */
 #ifdef INET6
+			/* FALLTHROUGH */
 		case AF_INET6:
 			if (!epsv6 || epsv6bad) {
 				result = COMPLETE + 1;
@@ -2045,7 +2055,7 @@ gunique(const char *local)
  *	needs to get back to a known state.
  */
 static void
-abort_squared(int dummy)
+abort_squared(int signo)
 {
 	char msgbuf[100];
 	size_t len;
@@ -2055,14 +2065,14 @@ abort_squared(int dummy)
 	len = strlcpy(msgbuf, "\nremote abort aborted; closing connection.\n",
 	    sizeof(msgbuf));
 	write(fileno(ttyout), msgbuf, len);
-	lostpeer(0);
+	lostpeer(signo);
 	siglongjmp(xferabort, 1);
 }
 
 void
 abort_remote(FILE *din)
 {
-	char buf[BUFSIZ];
+	unsigned char buf[BUFSIZ];
 	int nfnd;
 
 	if (cout == NULL) {

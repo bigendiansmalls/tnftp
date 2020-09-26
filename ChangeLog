@@ -1,4 +1,107 @@
-$NetBSD: ChangeLog,v 1.67 2015/10/04 06:20:58 lukem Exp $
+$NetBSD: ChangeLog,v 1.73 2020/07/05 11:37:02 lukem Exp $
+
+Sun Jul  5 11:18:52 UTC 2020	lukem
+
+	* Release as "tnftp 20200705".
+
+	* Provide dummy source in libnetbsd to avoid linker errors
+	  if no functions are replaced.
+
+	* Only replace glob if GLOB_BRACE and GLOB_TILDE aren't available.
+
+	* libnetbsd/snprintf.c: Rename static functions to avoid conflicts
+	  with standard names.
+
+	* libnetbsd/glob.c: Improve glob():
+		* Update to NetBSD glob.c 1.38.
+		* Switch from a recursive pattern matching algorithm to handle
+		  '*' to a backtracking one. Avoids DoS attacks with patterns
+		  "a*a*a*a*a*...b" matching against "aaaaaaaaaaaa...".
+		  See https://research.swtch.com/glob
+		* Bump the glob limits to 512KB for total string size and 64KB
+		  path entries. The old limits were too small for some
+		  important FTP use cases like a pkgsrc repository.
+
+	* Remove 3rd (endorsement) clause from my BSD-derived licenses.
+
+	* configure.ac: Add --with-local-libedit=(yes|auto|no) to control
+	  which libedit implementation to use [default auto]:
+		  * yes - force local implementation
+		  * auto - try system library, fallback to local implementation
+		  * no - force system library and fail if not found
+
+Sat Jul  4 14:51:41 UTC 2020	lukem
+
+	* Merge NetBSD libedit from 20160131 to 20200704:
+		* Fix uninitialized memory access in libedit history. PR/54399
+		* Fix out-of-bounds read in libedit c_delbefore. PR/54400
+		* Avoid segmentation fault in bad history file. PR/53597
+		* Fix crash in history saving. PR/52849
+		* Fix crash in c_gets().
+		* Fix crash in re_fastputc().
+		* Fix crash with backspacing on a long line.
+		* Fix patbuf updating.
+		* Save and restore errno in signal handler.
+		* Fix cursor movement. PR/54654, PR/54329
+		* Fix cursor after resize. PR/52359
+		* Fix terminal restoration if piped. PR/50863
+		* Fix memory leaks.
+		* Various UTF-8 fixes.
+		* Implementation improvements.
+		* Readline compatibility improvements (not used by ftp).
+		* <wchar.h> and chartype portability improvements.
+		* Remove 4 clause BSD licenses.
+		* Default editrc is $EDITRC, falling back to $HOME/.editrc.
+		* Add literal escape sequence support, patterned after the
+		  tcsh ones.
+		* Support pasting multiline buffers.
+		* Fix errno / el_errno handling.
+		* Improve directory completion in subdirs with only one match.
+		* Add support for escaping special characters when doing
+		  filename completion.
+		* Only quote the completion matches if we are doing filename
+		  completion.
+		* Don't escape strings with user-supplied completion functions.
+		* Grow the buffer for event search if there was not enough
+		  space.
+		* Use strncpy() or strlcpy() instead of memcpy().
+		* (Many fixes were from Ingo Schwarze.)
+
+	* Merge NetBSD ftp from 20151003 to 20200608:
+		* Avoid crashes by exiting if lostpeer due to a signal
+		  (e.g., remote server disconnection).
+		* Issue PWD commands to the server only when we actually
+		  need the results, not speculatively, just in case we might.
+		  Works around broken servers, and is quicker too.
+		* Fix error reporting when handling TLS connections.
+		* Use "anonymous" instead of the local username for anonymous
+		  ftp. Avoids unnecesary information leak.
+		* Correct format of IPv6 endpoint reporting.
+		* Refactoring and build fixes.
+		* Support using CONNECT for https:// via proxy.
+		  NetBSD PR/50438, PR/51043.
+		* Fix downloads of local files using file:// URLs
+		* Use the first name we requested the http/https URL for,
+		  not any name we ended up with after random redirects.
+
+Mon Feb  1 10:29:47 UTC 2016	lukem
+
+	* Merge libedit from NetBSD 20050531 to 20160131.
+	  Notable API changes, even if not used by tnftp:
+	  - Make el_get varyadic, and implement EL_GETTC.
+	  - Add EL_GETFP, and EL_SETFP.
+	  - Add EL_REFRESH for the benefit of readline
+	  - Document and enable wide character support.
+	  - Provide an el_init_fd function.
+
+	* Reduce differences to upstream in libedit.
+
+	* configure.ac: remove AC_FUNC_ALLOCA() and AC_TYPE_SIGNAL().
+
+Sun Jan 31 06:01:43 UTC 2016	lukem
+
+	* Provide missing vasprintf().
+	  Fix from J Raynor via pkgsrc-users.
 
 Sun Oct  4 06:19:25 UTC 2015	lukem
 
@@ -519,6 +622,7 @@ Sat May 14 04:44:35 UTC 2005	lukem
 
 	* Fail if we can't find a library with tgetent (needed for libedit).
 	  NetBSD PR pkg/28925.
+
 	* Improve quoting when using various autoconf macros.
 
 	* Merge NetBSD-ftp 20050513:

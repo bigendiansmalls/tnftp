@@ -1,5 +1,5 @@
-/*	$NetBSD: main.c,v 1.20 2015/10/04 04:53:26 lukem Exp $	*/
-/*	from	NetBSD: main.c,v 1.123 2015/04/23 23:31:23 lukem Exp	*/
+/*	$NetBSD: main.c,v 1.21 2020/07/04 09:59:07 lukem Exp $	*/
+/*	from	NetBSD: main.c,v 1.126 2019/02/04 04:09:13 mrg Exp	*/
 
 /*-
  * Copyright (c) 1996-2015 The NetBSD Foundation, Inc.
@@ -103,7 +103,7 @@ __COPYRIGHT("@(#) Copyright (c) 1985, 1989, 1993, 1994\
 #if 0
 static char sccsid[] = "@(#)main.c	8.6 (Berkeley) 10/9/94";
 #else
-__RCSID(" NetBSD: main.c,v 1.123 2015/04/23 23:31:23 lukem Exp  ");
+__RCSID(" NetBSD: main.c,v 1.126 2019/02/04 04:09:13 mrg Exp  ");
 #endif
 #endif /* not lint */
 
@@ -333,7 +333,7 @@ main(int volatile argc, char **volatile argv)
 			break;
 
 		case 'o':
-			outfile = optarg;
+			outfile = ftp_strdup(optarg);
 			if (strcmp(outfile, "-") == 0)
 				ttyout = stderr;
 			break;
@@ -473,7 +473,6 @@ main(int volatile argc, char **volatile argv)
 		if (localhome == NULL && !EMPTYSTRING(pw->pw_dir))
 			localhome = ftp_strdup(pw->pw_dir);
 		localname = ftp_strdup(pw->pw_name);
-		anonuser = localname;
 	}
 	if (netrc[0] == '\0' && localhome != NULL) {
 		if (strlcpy(netrc, localhome, sizeof(netrc)) >= sizeof(netrc) ||
@@ -670,7 +669,7 @@ cmdscanner(void)
 			case -2:	/* error */
 				if (fromatty)
 					putc('\n', ttyout);
-				quit(0, NULL);
+				justquit();
 				/* NOTREACHED */
 			case -3:	/* too long; try again */
 				fputs("Sorry, input line is too long.\n",
@@ -692,7 +691,7 @@ cmdscanner(void)
 			if (buf == NULL || num == 0) {
 				if (fromatty)
 					putc('\n', ttyout);
-				quit(0, NULL);
+				justquit();
 			}
 			if (num >= sizeof(line)) {
 				fputs("Sorry, input line is too long.\n",

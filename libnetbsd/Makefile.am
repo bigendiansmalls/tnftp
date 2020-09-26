@@ -1,9 +1,8 @@
-## $NetBSD: Makefile.am,v 1.2 2010/01/04 06:24:20 lukem Exp $
+## $NetBSD: Makefile.am,v 1.3 2020/07/05 11:11:10 lukem Exp $
 
 noinst_LTLIBRARIES = libnetbsd.la
 
-libnetbsd_la_SOURCES =
-
+libnetbsd_la_SOURCES = libnetbsd.c
 
 CPPFLAGS = \
 	-I$(srcdir) \
