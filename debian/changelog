@@ -1,3 +1,18 @@
+tnftp (20200705-2) unstable; urgency=medium
+
+  [ xiao sheng wen(肖盛文) ]
+  * d/control:
+      - Bump to Standards-Version: 4.5.1
+      - add Vcs-Browser Vcs-Git fields
+  * support cross build, Closes: #931163
+      - d/rules: minimal rules file
+      - add d/patches/001-for-dh_autoreconf.patch
+  * d/copyright: update debian/* copyright year to 2021
+  * add debian/upstream/metadata
+  * add d/clean
+
+ -- xiao sheng wen <atzlinux@sina.com>  Tue, 19 Jan 2021 16:52:39 +0800
+
 tnftp (20200705-1) unstable; urgency=medium
 
   [ 肖盛文 ]
