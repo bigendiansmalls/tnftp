@@ -1,0 +1,3 @@
+buildaux/compile
+debian/autoreconf.after
+debian/autoreconf.before
