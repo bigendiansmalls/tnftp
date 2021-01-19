@@ -1,3 +1,4 @@
+buildaux/ar-lib
 buildaux/compile
 debian/autoreconf.after
 debian/autoreconf.before
