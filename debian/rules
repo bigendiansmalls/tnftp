@@ -1,74 +1,9 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
 
 # Uncomment this to turn on verbose mode.
-export DH_VERBOSE=1
+#export DH_VERBOSE=1
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-DPKG_EXPORT_BUILDFLAGS = 1
-include /usr/share/dpkg/buildflags.mk
 
 %:
 	dh  $@
-
-build-arch: build
-build-indep: build
-build: build-stamp
-build-stamp:
-	dh_testdir
-	dh_update_autotools_config
-	./configure --prefix=/usr --mandir=\$${prefix}/share/man
-	$(MAKE)
-	touch build-stamp
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp
-	[ ! -f Makefile ] || $(MAKE) distclean
-	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-	dh_installdirs
-	$(MAKE) install prefix=$(CURDIR)/debian/tnftp/usr
-	# rename binary from ftp to tnftp -- ftp is already in use by alternatives system
-	# see #387717 for nasty details
-	#mv $(CURDIR)/debian/tnftp/usr/bin/ftp $(CURDIR)/debian/tnftp/usr/bin/tnftp
-	rm -rf $(CURDIR)/debian/tnftp/usr/share/man/cat1
-	touch install-stamp
-
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installdocs
-	dh_installman
-	mv `pwd`/debian/tnftp/usr/share/man/man1/ftp.1 \
-	   `pwd`/debian/tnftp/usr/share/man/man1/tnftp.1
-	mv `pwd`/debian/tnftp/usr/share/man/man3/editline.3 \
-	   `pwd`/debian/tnftp/usr/share/man/man3/editline.tn.3
-	mv `pwd`/debian/tnftp/usr/share/man/man5/editrc.5 \
-	   `pwd`/debian/tnftp/usr/share/man/man5/editrc.tn.5
-	dh_installinfo
-	dh_installchangelogs ChangeLog
-	dh_link
-	dh_strip
-	dh_compress
-	dh_fixperms
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_lintian
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
