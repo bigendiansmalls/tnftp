@@ -9,8 +9,6 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 	dh  $@
 
 execute_after_dh_installman:
-	mv `pwd`/debian/tnftp/usr/share/man/man1/ftp.1 \
-	   `pwd`/debian/tnftp/usr/share/man/man1/tnftp.1
 	mv `pwd`/debian/tnftp/usr/share/man/man3/editline.3 \
 	   `pwd`/debian/tnftp/usr/share/man/man3/editline.tn.3
 	mv `pwd`/debian/tnftp/usr/share/man/man5/editrc.5 \
