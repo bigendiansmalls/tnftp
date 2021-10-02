@@ -1,15 +1,15 @@
-#       $NetBSD: configure.ac,v 1.38 2020/07/05 11:37:02 lukem Exp $
+#       $NetBSD: configure.ac,v 1.44 2021/08/27 02:29:39 lukem Exp $
 #
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([tnftp], [20200705], [lukem@NetBSD.org])
+AC_INIT([tnftp], [20210827], [lukem@NetBSD.org])
 AC_PREREQ([2.69])
 
 AC_COPYRIGHT([
-Copyright (c) 1999-2020 The NetBSD Foundation, Inc.
+Copyright (c) 1999-2021 The NetBSD Foundation, Inc.
 All rights reserved.
 ])
-AC_REVISION([$Revision: 1.38 $])
+AC_REVISION([$Revision: 1.44 $])
 
 AS_SHELL_SANITIZE()
 
@@ -18,6 +18,8 @@ AC_CONFIG_AUX_DIR([buildaux])
 AC_CONFIG_MACRO_DIR([buildaux])
 AC_CONFIG_HEADERS([tnftp_config.h])
 AC_CONFIG_LIBOBJ_DIR([libnetbsd])
+
+AC_USE_SYSTEM_EXTENSIONS()
 
 AM_INIT_AUTOMAKE([-Wall -Werror foreign nostdinc silent-rules])
 AM_MAINTAINER_MODE()
@@ -89,6 +91,7 @@ AH_TEMPLATE([WITH_SSL],
 #
 AC_PROG_CC()
 AC_PROG_AWK()
+AM_PROG_AR()
 AC_PROG_LIBTOOL()
 
 #
@@ -338,10 +341,10 @@ AS_IF([test "$ac_cv_func_strptime" = yes], [AC_CHECK_DECLS([strptime])])
 #
 use_local_glob=yes
 AC_CHECK_HEADER([glob.h],
-                [AC_MSG_CHECKING([glob supports required extensions])
+                [AC_MSG_CHECKING([glob supports required flags])
                  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
 #include <glob.h>]], [[
-int f = GLOB_BRACE | GLOB_TILDE;
+int f = GLOB_BRACE|GLOB_NOCHECK|GLOB_TILDE;
 ]])],
                          [AC_MSG_RESULT([yes])
 			  use_local_glob=no],
@@ -412,7 +415,8 @@ return 0;
 ]])],
               [AC_MSG_RESULT([yes])
                AC_DEFINE([HAVE_VA_COPY], [1])],
-              [AC_MSG_RESULT([no])])
+              [AC_MSG_RESULT([no])],
+              [AC_MSG_RESULT([unknown - cross-compiling])])
 
 AC_MSG_CHECKING([for __builtin_va_copy])
 AC_RUN_IFELSE([AC_LANG_PROGRAM([[
@@ -424,7 +428,8 @@ return 0;
 ]])],
               [AC_MSG_RESULT([yes])
                AC_DEFINE([HAVE___BUILTIN_VA_COPY], [1])],
-              [AC_MSG_RESULT([no])])
+              [AC_MSG_RESULT([no])],
+              [AC_MSG_RESULT([unknown - cross-compiling])])
 
 AS_IF([test "$ac_cv_func_strptime" = yes],
       [AC_MSG_CHECKING([if strptime() needs separators between conversions])
@@ -492,9 +497,9 @@ AC_OUTPUT()
 AC_MSG_NOTICE([ === Configuration results ===])
 AC_MSG_NOTICE([Package:               $PACKAGE_STRING])
 AC_MSG_NOTICE([Prefix:                $prefix])
-AC_MSG_NOTICE([Command-line editing:  $opt_editcomplete])
-AC_MSG_NOTICE([Local libedit:         $with_local_libedit])
-AC_MSG_NOTICE([IPv6 support:          $opt_ipv6])
-AC_MSG_NOTICE([SOCKS5 proxy support:  $with_socks])
-AC_MSG_NOTICE([SSL:                   $with_ssl])
+AC_MSG_NOTICE([--enable-editcomplete  $opt_editcomplete])
+AC_MSG_NOTICE([--enable-ipv6          $opt_ipv6])
+AC_MSG_NOTICE([--enable-ssl           $with_ssl])
+AC_MSG_NOTICE([--with-local-libedit   $with_local_libedit])
+AC_MSG_NOTICE([--with-socks           $with_socks])
 AC_MSG_NOTICE([ =============================])

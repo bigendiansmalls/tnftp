@@ -1,4 +1,4 @@
-## $NetBSD: Makefile.am,v 1.5 2020/07/05 09:37:53 lukem Exp $
+## $NetBSD: Makefile.am,v 1.7 2021/08/27 01:48:01 lukem Exp $
 
 bin_PROGRAMS = tnftp
 
@@ -12,6 +12,7 @@ tnftp_SOURCES = \
 	main.c \
 	progressbar.c \
 	ruserpass.c \
+	ssl.c \
 	util.c
 
 tnftp_CPPFLAGS = \
@@ -40,9 +41,6 @@ endif	# !OPT_EDITCOMPLETE
 
 
 if WITH_SSL
-tnftp_SOURCES += \
-	ssl.c
-
 tnftp_CPPFLAGS += \
 	$(OPENSSL_INCLUDES)
 
@@ -56,7 +54,8 @@ man1_MANS = \
 	tnftp.1
 
 tnftp.1: ftp.1
-	cp $(srcdir)/ftp.1 tnftp.1
+	sed -e 's/^.Dt FTP/.Dt TNFTP/' -e 's/^.Nm ftp/.Nm tnftp/' \
+		$(srcdir)/ftp.1 > tnftp.1
 
 CLEANFILES = \
 	tnftp.1
