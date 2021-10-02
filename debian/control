@@ -5,7 +5,7 @@ Maintainer: xiao sheng wen <atzlinux@sina.com>
 Build-Depends: debhelper-compat (= 13),
  libncurses-dev,
  libssl-dev,
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Rules-Requires-Root: no
 Homepage: http://en.wikipedia.org/wiki/Tnftp
 Vcs-Browser: https://salsa.debian.org/debian/tnftp
