@@ -1,3 +1,13 @@
+tnftp (20210827-1) unstable; urgency=medium
+
+  [ xiao sheng wen(肖盛文) ]
+  * New upstream version 20210827
+  * delete d/patches dir, the new upstream version don't need patch
+  * delete d/README.source, not used
+  * Bump Standards-Version: 4.6.0
+
+ -- xiao sheng wen <atzlinux@sina.com>  Sat, 02 Oct 2021 15:56:34 +0800
+
 tnftp (20200705-2) unstable; urgency=medium
 
   [ xiao sheng wen(肖盛文) ]
