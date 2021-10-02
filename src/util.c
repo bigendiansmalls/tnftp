@@ -1,5 +1,5 @@
-/*	$NetBSD: util.c,v 1.24 2020/07/04 09:59:07 lukem Exp $	*/
-/*	from	NetBSD: util.c,v 1.161 2020/06/08 01:33:27 lukem Exp	*/
+/*	$NetBSD: util.c,v 1.25 2021/08/27 01:38:49 lukem Exp $	*/
+/*	from	NetBSD: util.c,v 1.162 2021/04/25 08:26:35 lukem Exp	*/
 
 /*-
  * Copyright (c) 1997-2020 The NetBSD Foundation, Inc.
@@ -69,7 +69,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID(" NetBSD: util.c,v 1.161 2020/06/08 01:33:27 lukem Exp  ");
+__RCSID(" NetBSD: util.c,v 1.162 2021/04/25 08:26:35 lukem Exp  ");
 #endif /* not lint */
 
 /*
@@ -738,7 +738,7 @@ remotemodtime(const char *file, int noisy)
 			*frac++ = '\0';
 		if (strlen(timestr) == 15 && strncmp(timestr, "191", 3) == 0) {
 			/*
-			 * XXX:	Workaround for lame ftpd's that return
+			 * XXX:	Workaround for buggy ftp servers that return
 			 *	`19100' instead of `2000'
 			 */
 			fprintf(ttyout,

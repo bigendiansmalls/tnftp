@@ -1,5 +1,5 @@
-/*	$NetBSD: fetch.c,v 1.24 2020/07/04 09:59:07 lukem Exp $	*/
-/*	from	NetBSD: fetch.c,v 1.231 2019/04/04 00:36:09 christos Exp	*/
+/*	$NetBSD: fetch.c,v 1.26 2021/08/27 01:38:49 lukem Exp $	*/
+/*	from	NetBSD: fetch.c,v 1.234 2021/08/01 15:29:30 andvar Exp	*/
 
 /*-
  * Copyright (c) 1997-2015 The NetBSD Foundation, Inc.
@@ -42,7 +42,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID(" NetBSD: fetch.c,v 1.231 2019/04/04 00:36:09 christos Exp  ");
+__RCSID(" NetBSD: fetch.c,v 1.234 2021/08/01 15:29:30 andvar Exp  ");
 #endif /* not lint */
 
 /*
@@ -144,6 +144,43 @@ static int	redirect_loop;
 #define	IS_HTTP_TYPE(urltype) \
 	((urltype) == HTTP_URL_T)
 #endif
+
+/**
+ * fwrite(3) replacement that just uses write(2). Many stdio implementations
+ * don't handle interrupts properly and corrupt the output. We are taking
+ * alarm interrupts because of the progress bar.
+ *
+ * Assumes `fp' is pristine with no prior I/O calls on it.
+ */
+static size_t
+maxwrite(const void *buf, size_t size, size_t nmemb, FILE *fp)
+{
+	const char *p = buf;
+	ssize_t nwr = 0;
+	ssize_t n;
+	int fd = fileno(fp);
+
+	size *= nmemb;	/* assume no overflow */
+
+	while (size > 0) {
+		if ((n = write(fd, p, size)) == -1) {
+			switch (errno) {
+			case EINTR:
+			case EAGAIN:
+#if defined(EWOULDBLOCK) && EWOULDBLOCK != EAGAIN
+			case EWOULDBLOCK:
+#endif
+				continue;
+			default:
+				return nwr;
+			}
+		}
+		p += n;
+		nwr += n;
+		size -= n;
+	}
+	return nwr;
+}
 
 /*
  * Determine if token is the next word in buf (case insensitive).
@@ -1302,7 +1339,7 @@ fetch_url(const char *url, const char *proxyenv, char *proxyauth, char *wwwauth)
 
 	DPRINTF("%s: `%s' proxyenv `%s'\n", __func__, url, STRorNULL(penv));
 
-	oldquit = oldalrm = oldint = oldpipe = NULL;
+	oldquit = oldalrm = oldint = oldpipe = SIG_ERR;
 	closefunc = NULL;
 	fin = NULL;
 	fout = NULL;
@@ -1579,9 +1616,9 @@ fetch_url(const char *url, const char *proxyenv, char *proxyauth, char *wwwauth)
 
 	bytes = 0;
 	hashbytes = mark;
-	if (oldalrm) {
+	if (oldalrm != SIG_ERR) {
 		(void)xsignal(SIGALRM, oldalrm);
-		oldalrm = NULL;
+		oldalrm = SIG_ERR;
 	}
 	progressmeter(-1);
 
@@ -1657,7 +1694,7 @@ fetch_url(const char *url, const char *proxyenv, char *proxyauth, char *wwwauth)
 				}
 				bytes += flen;
 				bufrem -= flen;
-				if (fwrite(xferbuf, sizeof(char), flen, fout)
+				if (maxwrite(xferbuf, sizeof(char), flen, fout)
 				    != flen) {
 					warn("Writing `%s'", savefile);
 					goto cleanup_fetch_url;
@@ -1743,14 +1780,14 @@ chunkerror:
 	warnx("Improper response from `%s:%s'", ui.host, ui.port);
 
  cleanup_fetch_url:
-	if (oldint)
+	if (oldint != SIG_ERR)
 		(void)xsignal(SIGINT, oldint);
-	if (oldpipe)
+	if (oldpipe != SIG_ERR)
 		(void)xsignal(SIGPIPE, oldpipe);
-	if (oldalrm)
+	if (oldalrm != SIG_ERR)
 		(void)xsignal(SIGALRM, oldalrm);
-	if (oldquit)
-		(void)xsignal(SIGQUIT, oldpipe);
+	if (oldquit != SIG_ERR)
+		(void)xsignal(SIGQUIT, oldquit);
 	if (fin != NULL)
 		fetch_close(fin);
 	else if (s != -1)
@@ -2215,7 +2252,7 @@ go_fetch(const char *url)
 	/*
 	 * Try FTP URL-style and host:file arguments next.
 	 * If ftpproxy is set with an FTP URL, use fetch_url()
-	 * Othewise, use fetch_ftp().
+	 * Otherwise, use fetch_ftp().
 	 */
 	proxyenv = getoptionvalue("ftp_proxy");
 	if (!EMPTYSTRING(proxyenv) && STRNEQUAL(url, FTP_URL))

@@ -1,4 +1,53 @@
-$NetBSD: ChangeLog,v 1.73 2020/07/05 11:37:02 lukem Exp $
+$NetBSD: ChangeLog,v 1.78 2021/08/27 02:29:39 lukem Exp $
+
+Fri Aug 27 02:06:34 UTC 2021
+
+	* Release as "tnftp 20210827".
+
+	* Always build ssl.c.
+
+	* Merge NetBSD ftp from 20210131 to 20210826:
+		* Use fetch_* instead of stdio to fix support with
+		  interruptable signals.
+		* Fix typos in comments.
+		* Manual page improvements. NetBSD PR bin/51883.
+		* Set SO_KEEPALIVE on control connection to attempt to
+		  avoid timeouts. NetBSD PR bin/56129.
+		* Validate address in server's PASV and LPSV responses.
+		  Previously a hostile server could cause ftp to open a
+		  data connection elsewhere.
+		* Remove unnecessary variable assignments.
+
+Wed Aug 25 01:48:47 UTC 2021
+
+	* configure:
+		* Update to automake 1.16.1.
+		* Enable AC_USE_SYSTEM_EXTENSIONS().
+		* Use --option-name in feature display.
+
+Sun May 16 08:25:55 UTC 2021	lukem
+
+	* Update INSTALL notes to reflect current configure.
+
+Sun Apr 25 09:24:51 UTC 2021	lukem
+
+	* Change tnftp(1) to refer to "tnftp" instead of "ftp".
+
+	* Merge NetBSD ftp from 20200608 to 20210131:
+		* Fix signal handler restoration. Avoids intermittent crash.
+		  Bug class reported by Joyu Liao from Juniper Networks.
+		* Improve ftp(1) manual page formatting, "debug" command
+		  description, and $https_proxy documentation.
+		  NetBSD PR/51883.
+		* Add -? to display synopsis and usage to stdout.
+		* Don't use restartable signals (SA_RESTART).
+		  Should fix intermittent failures with -q QUITTIME.
+		  NetBSD PR/55857. 
+
+Fri Feb 12 12:39:18 UTC 2021	lukem
+
+	* configure: soft-fail (instead of hard fail) when cross-compile
+	  checking for va_copy().
 
 Sun Jul  5 11:18:52 UTC 2020	lukem
 

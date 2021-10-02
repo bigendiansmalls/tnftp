@@ -1,8 +1,8 @@
-/*	$NetBSD: version.h,v 1.8 2020/07/04 09:59:07 lukem Exp $	*/
-/*	from	NetBSD: version.h,v 1.89 2020/06/08 01:33:27 lukem Exp	*/
+/*	$NetBSD: version.h,v 1.10 2021/08/27 01:38:49 lukem Exp $	*/
+/*	from	NetBSD: version.h,v 1.94 2021/08/26 06:25:59 lukem Exp	*/
 
 /*-
- * Copyright (c) 1999-2020 The NetBSD Foundation, Inc.
+ * Copyright (c) 1999-2021 The NetBSD Foundation, Inc.
  * All rights reserved.
  *
  * This code is derived from software contributed to The NetBSD Foundation
@@ -35,5 +35,5 @@
 #endif
 
 #ifndef FTP_VERSION
-#define	FTP_VERSION	"20200608"
+#define	FTP_VERSION	"20210826"
 #endif

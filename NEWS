@@ -1,6 +1,26 @@
-$NetBSD: NEWS,v 1.15 2020/07/05 11:37:02 lukem Exp $
+$NetBSD: NEWS,v 1.16 2021/08/27 02:29:39 lukem Exp $
 
-This is tnftp version 20200705.
+This is tnftp version 20210827.
+
+Changes in tnftp 20200705 to 20210827:
+
+	Validate address in server's PASV and LPSV responses. Previously a
+	hostile server could cause ftp to open a data connection elsewhere.
+
+	Avoid intermittent crashes by fixing signal handler restoration.
+
+	Fix intermittent failures in -q QUITTIME by not using restartable
+	signals.
+
+	Set SO_KEEPALIVE on control connection to attempt to avoid timeouts.
+
+	Update to NetBSD-ftp 20210826.
+
+	Improve configure tests.
+
+	Improve manual page.
+
+	Display usage to stdout with -?.
 
 Changes in tnftp 20151004 to 20200705:
 

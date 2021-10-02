@@ -1,8 +1,8 @@
-/*	$NetBSD: cmds.c,v 1.19 2020/07/04 09:59:07 lukem Exp $	*/
-/*	from	NetBSD: cmds.c,v 1.140 2019/02/06 07:56:42 martin Exp	*/
+/*	$NetBSD: cmds.c,v 1.20 2021/04/25 07:50:37 lukem Exp $	*/
+/*	from	NetBSD: cmds.c,v 1.141 2021/01/06 09:15:59 lukem Exp	*/
 
 /*-
- * Copyright (c) 1996-2009 The NetBSD Foundation, Inc.
+ * Copyright (c) 1996-2021 The NetBSD Foundation, Inc.
  * All rights reserved.
  *
  * This code is derived from software contributed to The NetBSD Foundation
@@ -101,7 +101,7 @@
 #if 0
 static char sccsid[] = "@(#)cmds.c	8.6 (Berkeley) 10/9/94";
 #else
-__RCSID(" NetBSD: cmds.c,v 1.140 2019/02/06 07:56:42 martin Exp  ");
+__RCSID(" NetBSD: cmds.c,v 1.141 2021/01/06 09:15:59 lukem Exp  ");
 #endif
 #endif /* not lint */
 
@@ -1138,7 +1138,7 @@ setdebug(int argc, char *argv[])
 		options |= SO_DEBUG;
 	else
 		options &= ~SO_DEBUG;
-	fprintf(ttyout, "Debugging %s (ftp_debug=%d).\n", onoff(ftp_debug), ftp_debug);
+	fprintf(ttyout, "Debugging %s (debug=%d).\n", onoff(ftp_debug), ftp_debug);
 	code = ftp_debug > 0;
 }
 
