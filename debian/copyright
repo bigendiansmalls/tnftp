@@ -20,6 +20,97 @@ Copyright:
     2020-2021 xiao sheng wen <atzlinux@sina.com>
 License: GPL-2+
 
+Files: libnetbsd/ftpglob.h
+ libnetbsd/ftpvis.h
+ libnetbsd/glob.c
+ libnetbsd/mkstemp.c
+ libnetbsd/strdup.c
+ libnetbsd/strsep.c
+ libnetbsd/strtoll.c
+ libnetbsd/strunvis.c
+Copyright: 1987-1993, The Regents of the University of California.
+License: BSD-3-clause
+
+Files: libnetbsd/dirname.c
+ libnetbsd/fgetln.c
+ libnetbsd/setprogname.c
+ libnetbsd/sl_init.c
+ libnetbsd/strptime.c
+ libnetbsd/usleep.c
+ libnetbsd/utimes.c
+Copyright: 1994-2004, The NetBSD Foundation, Inc.
+License: BSD-2-clause
+
+Files: libnetbsd/err.c
+ libnetbsd/fseeko.c
+Copyright: 1997-2020, Luke Mewburn <lukem@NetBSD.org>.
+License: BSD-2-clause
+
+Files: libnetbsd/getaddrinfo.c
+ libnetbsd/getnameinfo.c
+Copyright: 1995-1997, and 1998 WIDE Project.
+License: BSD-3-clause
+
+Files: libnetbsd/inet_ntop.c
+ libnetbsd/inet_pton.c
+Copyright:
+  1996-1999, Internet Software Consortium.
+  2004, Internet Systems Consortium, Inc. ("ISC")
+License: ISC
+
+Files: libnetbsd/strlcat.c
+ libnetbsd/strlcpy.c
+Copyright: 1998, Todd C. Miller <Todd.Miller@courtesan.com>
+License: ISC
+
+Files: libnetbsd/vasprintf.c
+Copyright: 2007, Joerg Sonnenberger <joerg@NetBSD.org>.
+License: BSD-2-clause
+
+Files: libnetbsd/strvis.c
+Copyright: 1989, 1993, The Regents of the University of California.
+License: BSD-3-clause
+
+Files: libnetbsd/snprintf.c
+Copyright: Patrick Powell 1995
+License: Unlicense
+
+License: Unlicense
+ Copyright Patrick Powell 1995
+ This code is based on code written by Patrick Powell (papowell@astart.com)
+ It may be used for any purpose as long as this notice remains intact
+ on all source code distributions
+
+Files: src/cmds.c
+ src/cmdtab.c
+ src/extern.h
+ src/ftp.1
+ src/ftp.c
+ src/ftp_var.h
+ src/main.c
+ src/util.c
+Copyright:
+  1996-2021, The NetBSD Foundation, Inc.
+License: BSD-3-clause
+
+Files: src/complete.c
+ src/fetch.c
+ src/progressbar.c
+ src/progressbar.h
+ src/ssl.h
+ src/version.h
+Copyright: 1996-2021, The NetBSD Foundation, Inc.
+License: BSD-2-clause
+
+Files: src/domacro.c
+ src/ruserpass.c
+ src/ssl.c
+Copyright: 1985, 1993-1994, The Regents of the University of California.
+  1998-2004, Dag-Erling CoÃ¯dan SmÃ¸rgrav
+  2008, 2010, Joerg Sonnenberger <joerg@NetBSD.org>
+  2015, Thomas Klausner <wiz@NetBSD.org>
+License: BSD-3-clause
+
 License: BSD-4-Clause
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions
@@ -76,3 +167,69 @@ License: GPL-2+
  the Debian GNU/Linux distribution in file /usr/share/common-licenses/GPL-2;
  if not, write to the Free Software Foundation, Inc., 51 Franklin St,
  Fifth Floor, Boston, MA 02110-1301, USA.
+
+License: ISC
+ .
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS.  IN NO EVENT SHALL ISC BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
+ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: BSD-3-Clause
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-2-Clause
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the
+    distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+ COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
