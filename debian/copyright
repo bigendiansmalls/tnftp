@@ -106,7 +106,7 @@ Files: src/domacro.c
  src/ruserpass.c
  src/ssl.c
 Copyright: 1985, 1993-1994, The Regents of the University of California.
-  1998-2004, Dag-Erling CoÃ¯dan SmÃ¸rgrav
+  1998-2004, Dag-Erling Coïdan Smørgrav
   2008, 2010, Joerg Sonnenberger <joerg@NetBSD.org>
   2015, Thomas Klausner <wiz@NetBSD.org>
 License: BSD-3-clause
