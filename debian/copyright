@@ -6,9 +6,9 @@ Source: ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
 Files: *
 Copyright:
     1985,1989,1993,1994 The Regents of the University of California.
-    1997-2007 The NetBSD Foundation, Inc.
+    1997-2021 The NetBSD Foundation, Inc.
     1997,1998 WIDE Project.
-    1999-2007 Luke Mewburn.
+    1999-2021 Luke Mewburn.
 License: BSD-4-Clause
 
 Files: debian/*
