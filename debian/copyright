@@ -152,7 +152,6 @@ License: BSD-4-Clause
  This product includes software developed by Christos Zoulas.
 
 License: GPL-2+
- .
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -169,7 +168,6 @@ License: GPL-2+
  Fifth Floor, Boston, MA 02110-1301, USA.
 
 License: ISC
- .
  Permission to use, copy, modify, and distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
@@ -183,7 +181,6 @@ License: ISC
  OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 License: BSD-3-Clause
- .
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
@@ -209,7 +206,6 @@ License: BSD-3-Clause
  SUCH DAMAGE.
 
 License: BSD-2-Clause
- .
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
