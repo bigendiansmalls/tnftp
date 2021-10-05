@@ -9,7 +9,7 @@ Copyright:
     1997-2007 The NetBSD Foundation, Inc.
     1997,1998 WIDE Project.
     1999-2007 Luke Mewburn.
-License: Unlicense
+License: BSD-4-Clause
 
 Files: debian/*
 Copyright:
@@ -20,7 +20,7 @@ Copyright:
     2020-2021 xiao sheng wen <atzlinux@sina.com>
 License: GPL-2+
 
-License: Unlicense
+License: BSD-4-Clause
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions
     are met:
