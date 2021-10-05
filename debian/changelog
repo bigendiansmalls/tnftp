@@ -5,8 +5,17 @@ tnftp (20210827-1) unstable; urgency=medium
   * delete d/patches dir, the new upstream version don't need patch
   * delete d/README.source, not used
   * Bump Standards-Version: 4.6.0
+  * d/rules: remove the libedit manpages (Closes: #995731)
+  * d/control:
+      - Build-Depends: + libedit-dev, using system libedit (Closes: #995712)
+  * d/copyright:
+      - update License to BSD-4-Clause (Closes: #995705)
+      - update date to 2021 year
+      - include all copyright statements (Closes: #995721)
+  * delete d/tnftp.lintian-overrides
+    the possible-gpl-code-linked-with-openssl not in use anymore
 
- -- xiao sheng wen <atzlinux@sina.com>  Sat, 02 Oct 2021 15:56:34 +0800
+ -- xiao sheng wen <atzlinux@sina.com>  Wed, 06 Oct 2021 01:04:55 +0800
 
 tnftp (20200705-2) unstable; urgency=medium
 
