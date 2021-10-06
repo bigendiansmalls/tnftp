@@ -7,7 +7,3 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 %:
 	dh  $@
-
-execute_after_dh_installman:
-	rm -rfv `pwd`/debian/tnftp/usr/share/man/man3/
-	rm -rfv `pwd`/debian/tnftp/usr/share/man/man5/
