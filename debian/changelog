@@ -1,3 +1,14 @@
+tnftp (20210827-2) unstable; urgency=medium
+
+  [ xiao sheng wen(肖盛文) ]
+  * d/rules: remove execute_after_dh_installman target,
+             not use after delete d/manpages
+  * d/copyright: add missing licenses from buildaux dir
+  * Switch to declarative alternatives
+  * d/control: +Provides: ftp, see #995710
+
+ -- xiao sheng wen <atzlinux@sina.com>  Fri, 08 Oct 2021 12:54:06 +0800
+
 tnftp (20210827-1) unstable; urgency=medium
 
   [ xiao sheng wen(肖盛文) ]
