@@ -15,6 +15,7 @@ Vcs-Git: https://salsa.debian.org/debian/tnftp.git
 Package: tnftp
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: ftp
 Conflicts: lukemftp
 Replaces: lukemftp
 Description: enhanced ftp client
