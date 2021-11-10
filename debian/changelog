@@ -1,3 +1,14 @@
+tnftp (20210827-3) unstable; urgency=medium
+
+  [ xiao sheng wen(肖盛文) ]
+  * add d/tnftp.manpages d/tnftp.install
+  * rename debian/dirs -> debian/tnftp.dirs
+           debian/docs -> debian/tnftp.docs
+  * d/control: add dummy transitional package ftp
+  * Use debian/latest branch, obey DEP 14
+
+ -- xiao sheng wen <atzlinux@sina.com>  Wed, 10 Nov 2021 15:56:14 +0800
+
 tnftp (20210827-2) unstable; urgency=medium
 
   [ xiao sheng wen(肖盛文) ]
