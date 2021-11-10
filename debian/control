@@ -39,3 +39,13 @@ Description: enhanced ftp client
     * `set option' override of ftp environment variables
     * TIS Firewall Toolkit gate ftp proxy support (c.f: `gate')
     * transfer-rate throttling (c.f: `-T', `rate')
+
+Package: ftp
+Section: oldlibs
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+ tnftp
+Replaces: ftp ( <= 0.17-35)
+Description: dummy transitional package for tnftp
+ This is a dummy transitional package transitioning ftp to tnftp.
