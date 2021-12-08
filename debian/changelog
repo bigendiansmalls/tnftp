@@ -1,3 +1,11 @@
+tnftp (20210827-4) unstable; urgency=medium
+
+  * add d/ftp.preinst to Fix
+    "update-alternatives: warning: /etc/alternatives/ftp is dangling"
+    (Closes: #1001301), thanks Paul Wise <pabs@debian.org>.
+
+ -- xiao sheng wen <atzlinux@sina.com>  Wed, 08 Dec 2021 22:23:04 +0800
+
 tnftp (20210827-3) unstable; urgency=medium
 
   [ xiao sheng wen(肖盛文) ]
