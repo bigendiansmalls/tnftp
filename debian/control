@@ -8,7 +8,7 @@ Build-Depends: debhelper-compat (= 13),
  libedit-dev,
 Standards-Version: 4.6.0
 Rules-Requires-Root: no
-Homepage: http://en.wikipedia.org/wiki/Tnftp
+Homepage: https://en.wikipedia.org/wiki/Tnftp
 Vcs-Browser: https://salsa.debian.org/debian/tnftp
 Vcs-Git: https://salsa.debian.org/debian/tnftp.git -b debian/latest
 
