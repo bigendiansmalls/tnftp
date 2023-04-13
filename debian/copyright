@@ -6,9 +6,9 @@ Source: ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
 Files: *
 Copyright:
     1985,1989,1993,1994 The Regents of the University of California.
-    1997-2021 The NetBSD Foundation, Inc.
+    1997-2023 The NetBSD Foundation, Inc.
     1997,1998 WIDE Project.
-    1999-2021 Luke Mewburn.
+    1999-2023 Luke Mewburn.
 License: BSD-4-Clause
 
 Files: debian/*
@@ -17,7 +17,7 @@ Copyright:
     2006 Luk Claes <luk@debian.org>
     2007 Bastian Venthur <venthur@debian.org>
     2008 Tobias Toedter <toddy@debian.org>
-    2020-2021 xiao sheng wen <atzlinux@sina.com>
+    2020-2023 xiao sheng wen <atzlinux@sina.com>
 License: GPL-2+
 
 Files: buildaux/ar-lib
