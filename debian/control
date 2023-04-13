@@ -2,10 +2,11 @@ Source: tnftp
 Section: net
 Priority: optional
 Maintainer: xiao sheng wen <atzlinux@sina.com>
-Build-Depends: debhelper-compat (= 13),
+Build-Depends:
+ debhelper-compat (= 13),
+ libedit-dev,
  libncurses-dev,
  libssl-dev,
- libedit-dev,
 Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Homepage: https://en.wikipedia.org/wiki/Tnftp
@@ -14,10 +15,15 @@ Vcs-Git: https://salsa.debian.org/debian/tnftp.git -b debian/latest
 
 Package: tnftp
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Provides: ftp
-Conflicts: lukemftp
-Replaces: lukemftp
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Provides:
+ ftp,
+Conflicts:
+ lukemftp,
+Replaces:
+ lukemftp,
 Description: enhanced ftp client
  tnftp is what many users affectionately call the enhanced ftp
  client in NetBSD (http://www.netbsd.org).
@@ -44,8 +50,10 @@ Package: ftp
 Section: oldlibs
 Architecture: all
 Multi-Arch: foreign
-Depends: ${misc:Depends},
- tnftp
-Replaces: ftp ( <= 0.17-35)
+Depends:
+ tnftp,
+ ${misc:Depends},
+Replaces:
+ ftp ( <= 0.17-35),
 Description: dummy transitional package for tnftp
  This is a dummy transitional package transitioning ftp to tnftp.
