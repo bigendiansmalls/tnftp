@@ -1,15 +1,15 @@
-#       $NetBSD: configure.ac,v 1.44 2021/08/27 02:29:39 lukem Exp $
+#       $NetBSD: configure.ac,v 1.46 2023/04/09 06:49:34 lukem Exp $
 #
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([tnftp], [20210827], [lukem@NetBSD.org])
+AC_INIT([tnftp], [20230409], [lukem@NetBSD.org])
 AC_PREREQ([2.69])
 
 AC_COPYRIGHT([
-Copyright (c) 1999-2021 The NetBSD Foundation, Inc.
+Copyright (c) 1999-2023 The NetBSD Foundation, Inc.
 All rights reserved.
 ])
-AC_REVISION([$Revision: 1.44 $])
+AC_REVISION([$Revision: 1.46 $])
 
 AS_SHELL_SANITIZE()
 

@@ -1,10 +1,11 @@
-/*	$NetBSD: ssl.c,v 1.7 2021/08/27 01:48:01 lukem Exp $	*/
-/*	from	NetBSD: ssl.c,v 1.10 2021/06/03 10:23:33 lukem Exp	*/
+/*	$NetBSD: ssl.c,v 1.9 2023/04/09 06:17:55 lukem Exp $	*/
+/*	from	NetBSD: ssl.c,v 1.14 2023/04/09 06:10:03 lukem Exp	*/
 
 /*-
  * Copyright (c) 1998-2004 Dag-Erling Coïdan Smørgrav
  * Copyright (c) 2008, 2010 Joerg Sonnenberger <joerg@NetBSD.org>
  * Copyright (c) 2015 Thomas Klausner <wiz@NetBSD.org>
+ * Copyright (c) 2023 Michael van Elst <mlelstv@NetBSD.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +40,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID(" NetBSD: ssl.c,v 1.10 2021/06/03 10:23:33 lukem Exp  ");
+__RCSID(" NetBSD: ssl.c,v 1.14 2023/04/09 06:10:03 lukem Exp  ");
 #endif
 
 #include <errno.h>
@@ -69,6 +70,7 @@ __RCSID(" NetBSD: ssl.c,v 1.10 2021/06/03 10:23:33 lukem Exp  ");
 #endif
 
 #include "ssl.h"
+#include "ftp_var.h"
 
 extern int quit_time, verbose, ftp_debug;
 extern FILE *ttyout;
@@ -594,7 +596,9 @@ fetch_start_ssl(int sock, const char *servername)
 {
 	SSL *ssl;
 	SSL_CTX *ctx;
+	X509_VERIFY_PARAM *param;
 	int ret, ssl_err;
+	int verify = !ftp_truthy("sslnoverify", getoptionvalue("sslnoverify"), 0);
 
 	/* Init the SSL library and context */
 	if (!SSL_library_init()){
@@ -606,6 +610,10 @@ fetch_start_ssl(int sock, const char *servername)
 
 	ctx = SSL_CTX_new(SSLv23_client_method());
 	SSL_CTX_set_mode(ctx, SSL_MODE_AUTO_RETRY);
+	if (verify) {
+		SSL_CTX_set_default_verify_paths(ctx);
+		SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
+	}
 
 	ssl = SSL_new(ctx);
 	if (ssl == NULL){
@@ -613,9 +621,25 @@ fetch_start_ssl(int sock, const char *servername)
 		SSL_CTX_free(ctx);
 		return NULL;
 	}
+
+	if (verify) {
+		param = SSL_get0_param(ssl);
+		if (!X509_VERIFY_PARAM_set1_host(param, servername,
+		    strlen(servername))) {
+			fprintf(ttyout, "SSL verification setup failed\n");
+			SSL_free(ssl);
+			SSL_CTX_free(ctx);
+			return NULL;
+		}
+
+		/* Enable peer verification, (using the default callback) */
+		SSL_set_verify(ssl, SSL_VERIFY_PEER, NULL);
+	}
+
 	SSL_set_fd(ssl, sock);
 	if (!SSL_set_tlsext_host_name(ssl, __UNCONST(servername))) {
 		fprintf(ttyout, "SSL hostname setting failed\n");
+		SSL_free(ssl);
 		SSL_CTX_free(ctx);
 		return NULL;
 	}
@@ -625,6 +649,7 @@ fetch_start_ssl(int sock, const char *servername)
 		    ssl_err != SSL_ERROR_WANT_WRITE) {
 			ERR_print_errors_fp(ttyout);
 			SSL_free(ssl);
+			SSL_CTX_free(ctx);
 			return NULL;
 		}
 	}

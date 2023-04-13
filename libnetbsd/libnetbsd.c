@@ -1,3 +1,3 @@
-/* $NetBSD: libnetbsd.c,v 1.1 2020/07/05 11:11:10 lukem Exp $ */
+/* $NetBSD: libnetbsd.c,v 1.2 2023/04/09 06:23:20 lukem Exp $ */
 
-const char libnetbsd_dummy[] = "Ensure libnetbsd.la is not empty";
+const char libnetbsd_placeholder[] = "Ensure libnetbsd.la is not empty";

@@ -1,8 +1,8 @@
-/*	$NetBSD: cmdtab.c,v 1.12 2013/05/05 11:17:30 lukem Exp $	*/
-/*	from	NetBSD: cmdtab.c,v 1.52 2012/12/22 16:57:09 christos Exp	*/
+/*	$NetBSD: cmdtab.c,v 1.13 2023/04/09 00:56:07 lukem Exp $	*/
+/*	from	NetBSD: cmdtab.c,v 1.53 2023/02/25 12:07:25 mlelstv Exp	*/
 
 /*-
- * Copyright (c) 1996-2009 The NetBSD Foundation, Inc.
+ * Copyright (c) 1996-2023 The NetBSD Foundation, Inc.
  * All rights reserved.
  *
  * This code is derived from software contributed to The NetBSD Foundation
@@ -68,7 +68,7 @@
 #if 0
 static char sccsid[] = "@(#)cmdtab.c	8.4 (Berkeley) 10/9/94";
 #else
-__RCSID(" NetBSD: cmdtab.c,v 1.52 2012/12/22 16:57:09 christos Exp  ");
+__RCSID(" NetBSD: cmdtab.c,v 1.53 2023/02/25 12:07:25 mlelstv Exp  ");
 #endif
 #endif /* not lint */
 
@@ -303,13 +303,14 @@ struct cmd cmdtab[] = {
 };
 
 struct option optiontab[] = {
-	{ "anonpass",	NULL },
-	{ "ftp_proxy",	NULL },
-	{ "http_proxy",	NULL },
-	{ "https_proxy",NULL },
-	{ "no_proxy",	NULL },
-	{ "pager",	NULL },
-	{ "prompt",	NULL },
-	{ "rprompt",	NULL },
-	{ NULL,		NULL },
+	{ "anonpass",	   NULL },
+	{ "ftp_proxy",	   NULL },
+	{ "http_proxy",	   NULL },
+	{ "https_proxy",   NULL },
+	{ "no_proxy",	   NULL },
+	{ "pager",	   NULL },
+	{ "prompt",	   NULL },
+	{ "rprompt",	   NULL },
+	{ "sslnoverify"   ,NULL },
+	{ NULL,		   NULL },
 };

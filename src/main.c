@@ -1,8 +1,8 @@
-/*	$NetBSD: main.c,v 1.22 2021/04/25 07:50:37 lukem Exp $	*/
-/*	from	NetBSD: main.c,v 1.127 2020/07/18 03:00:37 lukem Exp	*/
+/*	$NetBSD: main.c,v 1.23 2023/04/09 00:56:07 lukem Exp $	*/
+/*	from	NetBSD: main.c,v 1.129 2023/02/25 12:07:25 mlelstv Exp	*/
 
 /*-
- * Copyright (c) 1996-2015 The NetBSD Foundation, Inc.
+ * Copyright (c) 1996-2023 The NetBSD Foundation, Inc.
  * All rights reserved.
  *
  * This code is derived from software contributed to The NetBSD Foundation
@@ -103,7 +103,7 @@ __COPYRIGHT("@(#) Copyright (c) 1985, 1989, 1993, 1994\
 #if 0
 static char sccsid[] = "@(#)main.c	8.6 (Berkeley) 10/9/94";
 #else
-__RCSID(" NetBSD: main.c,v 1.127 2020/07/18 03:00:37 lukem Exp  ");
+__RCSID(" NetBSD: main.c,v 1.129 2023/02/25 12:07:25 mlelstv Exp  ");
 #endif
 #endif /* not lint */
 
@@ -276,7 +276,7 @@ main(int volatile argc, char **volatile argv)
 		}
 	}
 
-	while ((ch = getopt(argc, argv, "?46AadefginN:o:pP:q:r:Rs:tT:u:vVx:")) != -1) {
+	while ((ch = getopt(argc, argv, ":46AadefginN:o:pP:q:r:Rs:tT:u:vVx:")) != -1) {
 		switch (ch) {
 		case '4':
 			family = AF_INET;
@@ -429,6 +429,11 @@ main(int volatile argc, char **volatile argv)
 			if (optopt == '?') {
 				return usage_help();
 			}
+			warnx("-%c: unknown option", optopt);
+			return usage();
+
+		case ':':
+			warnx("-%c: missing argument", optopt);
 			return usage();
 
 		default:
@@ -516,6 +521,7 @@ main(int volatile argc, char **volatile argv)
 	setupoption("pager",		getenv("PAGER"),	DEFAULTPAGER);
 	setupoption("prompt",		getenv("FTPPROMPT"),	DEFAULTPROMPT);
 	setupoption("rprompt",		getenv("FTPRPROMPT"),	DEFAULTRPROMPT);
+	setupoption("sslnoverify",   	getenv("FTPSSLNOVERIFY"),	"");
 
 	free(anonpass);
 

@@ -1,6 +1,20 @@
-$NetBSD: NEWS,v 1.16 2021/08/27 02:29:39 lukem Exp $
+$NetBSD: NEWS,v 1.17 2023/04/09 06:49:34 lukem Exp $
 
-This is tnftp version 20210827.
+This is tnftp version 20230409.
+
+Changes in tnftp 20210827 to 20230409:
+
+	Validate SSL certificates by default, disabled with
+	FTPSSLNOVERIFY=1 in the environment, or option sslnoverify.
+
+	Add netrc processing to fetch-mode (URL on command line)
+	to enable options and autologin via netrc.
+
+	Handle relative URLs in fetch.
+
+	Improve formatting of manual page.
+
+	Update to NetBSD-ftp 20230225.
 
 Changes in tnftp 20200705 to 20210827:
 
