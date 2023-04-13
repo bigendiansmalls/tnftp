@@ -1,3 +1,20 @@
+tnftp (20230409-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Use secure URI in Homepage field.
+  * Re-export upstream signing key without extra signatures.
+
+  [ xiao sheng wen ]
+  * New upstream version 20230409
+  * Bump Standards-Version: 4.6.2
+  * d/copyright:
+      - update License: BSD-4-Clause
+      - update year info to 2023
+  * d/watch: add pasv opts as use ftp
+  * run wrap-and-sort -a -s -b -k -t
+
+ -- xiao sheng wen <atzlinux@sina.com>  Thu, 13 Apr 2023 18:40:03 +0800
+
 tnftp (20210827-4) unstable; urgency=medium
 
   * add d/ftp.preinst to Fix
