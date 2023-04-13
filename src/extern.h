@@ -1,8 +1,8 @@
-/*	$NetBSD: extern.h,v 1.14 2020/07/04 09:59:07 lukem Exp $	*/
-/*	from	NetBSD: extern.h,v 1.82 2019/06/22 23:40:53 christos Exp	*/
+/*	$NetBSD: extern.h,v 1.15 2023/04/09 00:56:07 lukem Exp $	*/
+/*	from	NetBSD: extern.h,v 1.83 2023/02/25 12:07:25 mlelstv Exp	*/
 
 /*-
- * Copyright (c) 1996-2009 The NetBSD Foundation, Inc.
+ * Copyright (c) 1996-2023 The NetBSD Foundation, Inc.
  * All rights reserved.
  *
  * This code is derived from software contributed to The NetBSD Foundation
@@ -244,6 +244,7 @@ void	user(int, char **);
 int	ftp_connect(int, const struct sockaddr *, socklen_t, int);
 int	ftp_listen(int, int);
 int	ftp_poll(struct pollfd *, int, int);
+int	ftp_truthy(const char *, const char *, int);
 #ifndef SMALL
 void   *ftp_malloc(size_t);
 StringList *ftp_sl_init(void);
