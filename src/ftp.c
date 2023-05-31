@@ -1,5 +1,5 @@
-/*	$NetBSD: ftp.c,v 1.24 2021/08/27 01:38:49 lukem Exp $	*/
-/*	from	NetBSD: ftp.c,v 1.174 2021/08/26 06:23:24 lukem Exp	*/
+/*	$NetBSD: ftp.c,v 1.25 2023/05/06 09:32:18 lukem Exp $	*/
+/*	from	NetBSD: ftp.c,v 1.175 2023/05/05 15:46:06 lukem Exp	*/
 
 /*-
  * Copyright (c) 1996-2021 The NetBSD Foundation, Inc.
@@ -98,7 +98,7 @@
 #if 0
 static char sccsid[] = "@(#)ftp.c	8.6 (Berkeley) 10/27/94";
 #else
-__RCSID(" NetBSD: ftp.c,v 1.174 2021/08/26 06:23:24 lukem Exp  ");
+__RCSID(" NetBSD: ftp.c,v 1.175 2023/05/05 15:46:06 lukem Exp  ");
 #endif
 #endif /* not lint */
 
@@ -1741,7 +1741,8 @@ dataconn(const char *lmode)
 		if (timeout < 0)
 			timeout = 0;
 		rv = ftp_poll(pfd, 1, timeout);
-	} while (rv == -1 && errno == EINTR);	/* loop until poll ! EINTR */
+			/* loop until poll !EINTR && !EAGAIN */
+	} while (rv == -1 && (errno == EINTR || errno == EAGAIN));
 	if (rv == -1) {
 		warn("Can't poll waiting before accept");
 		goto dataconn_failed;
@@ -1755,7 +1756,8 @@ dataconn(const char *lmode)
 	fromlen = myctladdr.su_len;
 	do {
 		s = accept(data, (struct sockaddr *) &from.si_su, &fromlen);
-	} while (s == -1 && errno == EINTR);	/* loop until accept ! EINTR */
+			/* loop until accept !EINTR && !EAGAIN */
+	} while (s == -1 && (errno == EINTR || errno == EAGAIN));
 	if (s == -1) {
 		warn("Can't accept data connection");
 		goto dataconn_failed;

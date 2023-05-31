@@ -1,6 +1,21 @@
-$NetBSD: ChangeLog,v 1.79 2023/04/09 06:49:34 lukem Exp $
+$NetBSD: ChangeLog,v 1.81 2023/05/07 18:32:11 lukem Exp $
 
-Sun Apr  9 06:45:06 UTC 2023
+Sun May  7 18:30:03 UTC 2023	lukem
+
+	* Release as "tnftp 20230507".
+
+	* Consistency fixes in ChangeLog and NEWS.
+
+Sat May  6 09:43:04 UTC 2023	lukem
+
+	* Merge NetBSD ftp from 20230226 to 20230505:
+		* Add timeout for SSL connection setup, defaulting to 60
+		  seconds.
+		* Consistently use poll(2) instead of select(2).
+		* Check EAGAIN as well as EINTR.
+		* Simplify includes.
+
+Sun Apr  9 06:45:06 UTC 2023	lukem
 
 	* Release as "tnftp 20230409".
 
@@ -20,7 +35,7 @@ Sun Apr  9 06:45:06 UTC 2023
 		* Equivalent to "NetBSD-ftp 20230225" with documentation
 		  and portability fixes.
 
-Fri Aug 27 02:06:34 UTC 2021
+Fri Aug 27 02:06:34 UTC 2021	lukem
 
 	* Release as "tnftp 20210827".
 
@@ -38,7 +53,7 @@ Fri Aug 27 02:06:34 UTC 2021
 		  data connection elsewhere.
 		* Remove unnecessary variable assignments.
 
-Wed Aug 25 01:48:47 UTC 2021
+Wed Aug 25 01:48:47 UTC 2021	lukem
 
 	* configure:
 		* Update to automake 1.16.1.
