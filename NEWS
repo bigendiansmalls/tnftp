@@ -1,8 +1,14 @@
-$NetBSD: NEWS,v 1.17 2023/04/09 06:49:34 lukem Exp $
+$NetBSD: NEWS,v 1.18 2023/05/07 18:32:11 lukem Exp $
 
-This is tnftp version 20230409.
+This is tnftp version 20230507.
 
-Changes in tnftp 20210827 to 20230409:
+Changes in tnftp from 20230409 to 20230507:
+
+	Add timeout for SSL connection setup, defaulting to 60 seconds.
+
+	Update to NetBSD-ftp 20230505.
+
+Changes in tnftp from 20210827 to 20230409:
 
 	Validate SSL certificates by default, disabled with
 	FTPSSLNOVERIFY=1 in the environment, or option sslnoverify.
@@ -16,7 +22,7 @@ Changes in tnftp 20210827 to 20230409:
 
 	Update to NetBSD-ftp 20230225.
 
-Changes in tnftp 20200705 to 20210827:
+Changes in tnftp from 20200705 to 20210827:
 
 	Validate address in server's PASV and LPSV responses. Previously a
 	hostile server could cause ftp to open a data connection elsewhere.
@@ -36,7 +42,7 @@ Changes in tnftp 20200705 to 20210827:
 
 	Display usage to stdout with -?.
 
-Changes in tnftp 20151004 to 20200705:
+Changes in tnftp from 20151004 to 20200705:
 
 	Avoid crashes by exiting if lostpeer due to a signal
 	(e.g., remote server disconnection).
@@ -67,7 +73,7 @@ Changes in tnftp 20151004 to 20200705:
 
 	Portability improvements.
 
-Changes in tnftp 20141104 to 20151004:
+Changes in tnftp from 20141104 to 20151004:
 
 	Implement '-x xferbufsize' to set xferbuf size.
 
